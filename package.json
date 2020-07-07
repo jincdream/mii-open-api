@@ -1,6 +1,6 @@
 {
   "name": "mii-open-api",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "miniapp open api",
   "keywords": [
     "miniapp",
@@ -17,7 +17,7 @@
   "sideEffects": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/jincdream/selector"
+    "url": "https://github.com/jincdream/mii-open-api"
   },
   "author": "jinc.cjc <jinc.cjc@alibaba-inc.com>",
   "license": "MIT",
