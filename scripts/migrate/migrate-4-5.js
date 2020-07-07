@@ -7,6 +7,7 @@ const { resolve, join } = require('path')
 
 const kleur = require('kleur')
 
+// @ts-ignore
 const sh = require('shelljs')
 const JSON5 = require('json5')
 const sortObjectByKeyNameList = require('sort-object-keys')

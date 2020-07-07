@@ -3,17 +3,18 @@ type Actions = {
   OpenApi: {}
 }
 type API = { [key: string]: (args?: object) => Promise<any> }
-class OpenAPI extends ActionCore<Actions> {
+export class OpenAPI extends ActionCore<Actions> {
   private apis: API = {}
   private bizCode: string
   private apisProxy: {}
-  constructor(bizCode: string) {
+  constructor(bizCode: string, apis: API = {}) {
     super()
+    this.apis = apis
     this.install<object>('OpenApi', async ({ data, target }) => {
       let { apis } = this
       let fn =
         apis[target] ||
-        async function(args) {
+        async function(args: object) {
           console.log('no api', target, args)
           return { success: true }
         }
@@ -33,7 +34,9 @@ class OpenAPI extends ActionCore<Actions> {
     return new Proxy(
       {},
       {
-        set: () => false,
+        set: (obj, props: string) => {
+          throw new Error(`[mii-open-api]: Can't rewrite the "${props}" api!`)
+        },
         defineProperty: () => false,
         getPrototypeOf: () => null,
         setPrototypeOf: () => false,

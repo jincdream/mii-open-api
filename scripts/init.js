@@ -1,5 +1,6 @@
 const kleur = require('kleur')
 const prompts = require('prompts')
+// @ts-ignore
 const sh = require('shelljs')
 const sortObjectByKeyNameList = require('sort-object-keys')
 const replace = require('replace-in-file')
