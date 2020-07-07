@@ -1,4 +1,5 @@
 import ActionCore from 'action-core'
+import { Client, Server } from 'jinter'
 type Actions = {
   OpenApi: {}
 }
@@ -15,7 +16,7 @@ export class OpenAPI extends ActionCore<Actions> {
       let fn =
         apis[target] ||
         async function(args: object) {
-          console.log('no api', target, args)
+          console.warn('no api', target, args)
           return { success: true }
         }
       let rz = await fn(data)
@@ -60,9 +61,13 @@ export class Bridge {
   private openAPI: OpenAPI
   private apis: API
   constructor(code: string) {
+    this.server = new Server(code)
+    this.client = new Client(code)
     this.openAPI = new OpenAPI(code)
     this.apis = this.openAPI.get()
   }
+  public client: Client
+  public server: Server
   setBridge(apis: API) {
     this.openAPI.set(apis)
   }
