@@ -30,6 +30,7 @@ console.log(user)
 ```js
 // 创建实例
 const bridge = new Bridge('pluginA')
+// client, server具体的文档可以看https://github.com/search?l=JavaScript&q=jinter&type=Repositories
 const { client, server } = bridge
 
 /**
